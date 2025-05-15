@@ -1,0 +1,62 @@
+service: serverless-products-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+functions:
+  getAll:
+    handler: products/getAll.handler
+    events:
+      - http:
+          path: /products
+          method: get
+          cors: true
+
+  getById:
+    handler: products/getById.handler
+    events:
+      - http:
+          path: /products/{id}
+          method: get
+          cors: true
+
+  create:
+    handler: products/create.handler
+    events:
+      - http:
+          path: /products
+          method: post
+          cors: true
+
+  update:
+    handler: products/update.handler
+    events:
+      - http:
+          path: /products/{id}
+          method: put
+          cors: true
+
+  delete:
+    handler: products/delete.handler
+    events:
+      - http:
+          path: /products/{id}
+          method: delete
+          cors: true
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 8000
+    lambdaPort: 8002
+    websocketPort: 8001
+
+package:
+  individually: true 

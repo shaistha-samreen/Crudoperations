@@ -1,0 +1,26 @@
+{
+  "name": "serverless-products-api",
+  "version": "1.0.0",
+  "description": "Serverless CRUD API for products",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "deploy": "serverless deploy",
+    "dev": "serverless offline",
+    "start": "serverless offline start"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "serverless": "^3.33.0",
+    "serverless-offline": "^12.0.4"
+  }
+}

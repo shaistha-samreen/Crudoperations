@@ -1,0 +1,48 @@
+service: products-service
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  getAll:
+    handler: getAll.handler
+    events:
+      - http:
+          path: /products
+          method: get
+          cors: true
+
+  getById:
+    handler: getById.handler
+    events:
+      - http:
+          path: /products/{id}
+          method: get
+          cors: true
+
+  create:
+    handler: create.handler
+    events:
+      - http:
+          path: /products
+          method: post
+          cors: true
+
+  update:
+    handler: update.handler
+    events:
+      - http:
+          path: /products/{id}
+          method: put
+          cors: true
+
+  delete:
+    handler: delete.handler
+    events:
+      - http:
+          path: /products/{id}
+          method: delete
+          cors: true 
